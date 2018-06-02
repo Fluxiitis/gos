@@ -2544,8 +2544,8 @@ end
 
 function Kayn:LoadSpells()
 
-	Q = { range = 350,	width = 100, delay = 0.25, speed = 1000 }
-	W = { range = myHero:GetSpellData(_W).range, width = 175, delay = 0.25, speed = 1750 }
+	Q = { range = 350,	width = 100, delay = 0.10, speed = 1000 }
+	W = { range = myHero:GetSpellData(_W).range, width = 175, delay = 0.10, speed = 1750 }
 	E = { range = 400 }
 	R = { range = 550 }
 end
@@ -2831,7 +2831,7 @@ end
 function MasterYi:LoadSpells()
 
 	attackRange = myHero.range + myHero.boundingRadius
-	Q = { range = myHero:GetSpellData(_Q).range,	delay = 0.25 }
+	Q = { range = myHero:GetSpellData(_Q).range,	delay = 0.10 }
 	W = { range = 500 }
 	E = { }
 	R = { }
@@ -5206,8 +5206,8 @@ end
 function Rengar:LoadSpells()
 
 	Q = { range = 725 }
-	W = { range = 450,	width = myHero:GetSpellData(_W).width,	speed = myHero:GetSpellData(_W).speed,	delay = 0.25 }
-	E = { range = 1000,	width = myHero:GetSpellData(_E).width,	speed = myHero:GetSpellData(_E).speed,	delay = 0.25,
+	W = { range = 450,	width = myHero:GetSpellData(_W).width,	speed = myHero:GetSpellData(_W).speed,	delay = 0.10 }
+	E = { range = 1000,	width = myHero:GetSpellData(_E).width,	speed = myHero:GetSpellData(_E).speed,	delay = 0.10,
 		collision = Collision:SetSpell(1000, myHero:GetSpellData(_E).speed, 0.25, 100, true)}
 end
 
