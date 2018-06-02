@@ -633,7 +633,7 @@ LocalCallbackAdd("Tick", function()
 
 CastItBlindFuck = function(spell, pos, range, delay)
 	local range = range or math.huge
-	local delay = delay or 250
+	local delay = delay or 50
 	local ticker = GetTickCount()
 
 	if castSpell.state == 0 and GetDistance(Katarina.pos, pos) < range and ticker - castSpell.casting > delay + Latency() then
