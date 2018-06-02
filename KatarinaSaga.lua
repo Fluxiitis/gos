@@ -8,7 +8,7 @@ local Latency = Game.Latency
 local ping = Latency() * .001
 local Q = { Range = 625}
 local W = { Range = 340 }
-local E = { Range = 725, Speed = 5000, Delay = .25, Radius = 50}
+local E = { Range = 725, Speed = 5000, Delay = 0, Radius = 50}
 local R = { Range = 550}
 local atan2 = math.atan2
 local round
