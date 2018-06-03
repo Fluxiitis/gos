@@ -489,7 +489,7 @@ end
 function Utils:CastSpellMM(spell, pos, range, delay)
 
 	local range = range or _huge
-	local delay = delay or 250
+	local delay = delay or 0
 	local ticker = GetTickCount()
 
 	if castSpell.state == 0 and self:GetDistance(myHero.pos, pos) < range and ticker - castSpell.casting > delay + LocalGameLatency() then
@@ -644,7 +644,7 @@ end -- not sure what or why removed stuff, who cares, works.
 function Utils:GetPred(unit,speed,delay,sourcePos)
 
 	local speed = speed or _huge
-	local delay = delay or 0.25
+	local delay = delay or 0
 	local sourcePos = sourcePos or myHero.pos
 	local unitSpeed = unit.ms
 
