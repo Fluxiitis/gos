@@ -2234,8 +2234,8 @@ function MissFortune:CreateMenu()
 end
 
 function MissFortune:LoadSpells()
-	Q = {Range = 650, Delay = .25, Speed = 1800}
-	E = {Range = 1000, Delay = .5, Width = 400}
+	Q = {Range = 650, Delay = .1, Speed = 1800}
+	E = {Range = 1000, Delay = .1, Width = 400}
 end
 
 function MissFortune:Draw()
