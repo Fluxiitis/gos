@@ -23,7 +23,7 @@
         self.Q = Spell({
             Slot = 0,
             Range = 800,
-            Delay = 0.85,
+            Delay = 0.1,
             Speed = huge,
             Radius = 150,
             Collision = false,
@@ -33,7 +33,7 @@
         self.QE = Spell({ 
             Slot = 2,          
             Range = 1200,
-            Delay = 0.25,
+            Delay = 0.1,
             Speed = 1600,
             Radius = 60,
             Collision = false,
@@ -42,7 +42,7 @@
         self.W = Spell({
             Slot = 1,
             Range = 925,
-            Delay = 0.25,
+            Delay = 0.1,
             Speed = 1450,
             Radius = 100,
             Collision = false,
@@ -52,7 +52,7 @@
         self.E = Spell({
             Slot = 2,
             Range = 700,
-            Delay = 0.25,
+            Delay = 0.1,
             Speed = 2500,
             Radius = 100,
             Collision = false,
@@ -62,7 +62,7 @@
         self.R = Spell({
             Slot = 3,
             Range = 675,
-            Delay = 0.25,
+            Delay = 0.1,
             Speed = huge,
             Radius = 0,
             Collision = false,
