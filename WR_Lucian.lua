@@ -21,7 +21,7 @@ function Lucian:Spells()
         self.Q = Spell({
                 Slot = 0,
                 Range = 650,
-                Delay = 0.35,
+                Delay = 0.05,
                 Speed = huge,
                 Radius = 30,
                 Collision = false,
@@ -32,7 +32,7 @@ function Lucian:Spells()
         self.Q2 = Spell({
                 Slot = 0,
                 Range = 900,
-                Delay = 0.35,
+                Delay = 0.05,
                 Speed = huge,
                 Radius = 30,
                 Collision = false,
@@ -43,7 +43,7 @@ function Lucian:Spells()
         self.W = Spell({
                 Slot = 1,
                 Range = 1000,
-                Delay = 0.30,
+                Delay = 0.05,
                 Speed = 1600,
                 Radius = 40,
                 Collision = true,
@@ -60,7 +60,7 @@ function Lucian:Spells()
         self.R = Spell({
                 Slot = 3,
                 Range = 1200,
-                Delay = 0.25,
+                Delay = 0.05,
                 Speed = huge,
                 Radius = 50,
                 Collision = true,
