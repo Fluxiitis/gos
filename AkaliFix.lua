@@ -414,9 +414,6 @@ function Combo(target)
                                         if not UnderEnemyTurret(target) then
                                                 Control.CastSpell(HK_R, target.pos)
 						end
-				 else
-                                        Control.CastSpell(HK_R, target.pos)
-                        end
                 if Config.Combo.Q.Enabled:Value() and CanUseSpell(myHero, _Q ) and IsValidTarget(target, GetRange(_Q), false, myHero.pos) then
                             Control.CastSpell(HK_Q, target.pos)
                         end
