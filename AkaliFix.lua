@@ -409,19 +409,6 @@ end
 
 function Combo(target)
         if Config.Key.Combo:Value() then
-		local gun = aGetItemSlot(myHero,3146)
-		end
-				local CutBlade = aGetItemSlot(myHero,3144)
-				if gun >= 1 and GetDistance(myHero.pos,target.pos) <= 690 + 25 and Config.Items.useGun.Enabled:Value() then
-					if CanUseSpell(gun) then
-						Control.CastSpell(Item_HK[gun],target.pos)
-						end
-					end
-				if CutBlade >= 1 and GetDistance(myHero.pos,target.pos) <= 690 + 25 and Config.Items.useCut.Enabled:Value() then
-					if CanUseSpell(CutBlade) then
-						Control.CastSpell(Item_HK[CutBlade],target.pos)
-						end
-					end
 			if Config.Combo.R.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R), false, myHero.pos) then
                                 if Config.Combo.R.Turret:Value() then
                                         if not UnderEnemyTurret(target) then
