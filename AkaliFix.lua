@@ -423,7 +423,6 @@ function Combo(target)
 				if Config.Combo.E.Enabled:Value() and Ready(_E) and IsValidTarget(target, GetRange(_W), false, myHero.pos) then
                             Control.CastSpell(HK_E)
 				end
-			)
                         if Config.Combo.R.GapClose.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R) * 2 + 100, false, myHero.pos) then
                                 if myHero.pos:DistanceTo(target.pos) > GetRange(_R) then
                                         if MinionForGap(target) ~= nil and myHero:GetSpellData(_R).ammo > Config.Combo.R.GapClose.Stacks:Value() and CountEnemiesInRange(target, 950) <= Config.Combo.R.GapClose.Enemies:Value() then
