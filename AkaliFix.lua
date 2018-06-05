@@ -409,8 +409,8 @@ end
 
 function Combo(target)
         if Config.Key.Combo:Value() then
-		end
 		local gun = aGetItemSlot(myHero,3146)
+		end
 				local CutBlade = aGetItemSlot(myHero,3144)
 				if gun >= 1 and GetDistance(myHero.pos,target.pos) <= 690 + 25 and Config.Items.useGun.Enabled:Value() then
 					if CanUseSpell(gun) then
