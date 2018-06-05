@@ -423,8 +423,7 @@ function Combo(target)
 				if Config.Combo.E.Enabled:Value() and Ready(_E) and IsValidTarget(target, GetRange(_W), false, myHero.pos) then
                             Control.CastSpell(HK_E)
 						end
-				
-				
+				end
 				
                         if Config.Combo.R.GapClose.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R) * 2 + 100, false, myHero.pos) then
                                 if myHero.pos:DistanceTo(target.pos) > GetRange(_R) then
