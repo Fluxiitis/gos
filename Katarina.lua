@@ -6,13 +6,7 @@ function PrintMsg(msg)
 	PrintChat("<font color=\"#ff0000\"><b>[Katarina]</b></font> <font color=\"#ffffff\">"..msg.."</font>")
 end
 
-if FileExist(LIB_PATH..'TPred.lua') then
-  	require('TPred')
-else
-  	print("Downloading TRPrediction, please don't press F9")
-    DelayAction(function() DownloadFile("https://raw.githubusercontent.com/Project4706/BoL/master/TRPrediction.lua".."?rand="..math.random(1,10000), LIB_PATH.."TRPrediction.lua", function () print("Successfully downloaded TRPrediction. Press F9 twice.") end) end, 3) 
-    return
-end
+local hpredTick = 0
 
 local Q = {range = 625}
 local W = {range = 340}
