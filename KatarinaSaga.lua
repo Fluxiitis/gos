@@ -8,7 +8,7 @@ local Latency = Game.Latency
 local ping = Latency() * .001
 local Q = { Range = 625}
 local W = { Range = 340 }
-local E = { Range = 725, Speed = 5000, Delay = 0, Radius = 50}
+local E = { Range = 725, Speed = 5000, Delay = .25, Radius = 50}
 local R = { Range = 550}
 local atan2 = math.atan2
 local round
@@ -171,12 +171,9 @@ GetDistanceSqr = function(p1, p2)
 	end
 
 GetEnemyHeroes = function()
-        if _EnemyHeroes then
-            return _EnemyHeroes
-        end
         _EnemyHeroes = {}
-        for i = 1, SagaHeroCount do
-            local unit = sHero(i)
+        for i = 1, Game.HeroCount() do
+            local unit = Game.Hero(i)
             if unit.team == TEAM_ENEMY  then
                 _EnemyHeroes[myCounter] = unit
                 myCounter = myCounter + 1
@@ -240,7 +237,9 @@ GetTarget = function(range)
 			return GOS:GetTarget(range, "AP")
 		else
 			return GOS:GetTarget(range, "AD")
-		end
+        end
+    elseif _G.gsoSDK then
+		return _G.gsoSDK.TS:GetTarget()
 	end
 end
 
@@ -556,11 +555,19 @@ GetOrbMode = function()
         end
     elseif SagaOrb == 3 then
         return GOS:GetMode()
+    elseif SagaOrb == 4 then
+        return _G.gsoSDK.Orbwalker:GetMode()
     end
 end
 
 LocalCallbackAdd("Tick", function()
     
+    if Game.Timer() > Saga.Rate.champion:Value() and #_EnemyHeroes == 0 then
+        TotalHeroes = GetEnemyHeroes()
+        print(TotalHeroes)
+    end
+    if #_EnemyHeroes == 0 then return end
+
     if isEvading then return end
     
     UpdateMovementHistory()
@@ -633,7 +640,7 @@ LocalCallbackAdd("Tick", function()
 
 CastItBlindFuck = function(spell, pos, range, delay)
 	local range = range or math.huge
-	local delay = delay or 50
+	local delay = delay or 250
 	local ticker = GetTickCount()
 
 	if castSpell.state == 0 and GetDistance(Katarina.pos, pos) < range and ticker - castSpell.casting > delay + Latency() then
@@ -970,7 +977,6 @@ function GetDamage(spell, unit)
 	local AP = myHero.ap
 	local bAD = myHero.bonusDamage
 
-
     if spell == HK_Q then
 		if Game.CanUseSpell(0) == 0 then
 			damage = CalcMagicalDamage(Katarina ,unit, ((Katarina:GetSpellData(_Q).level * 30 + 45) + (AP * 0.3)))
@@ -1281,7 +1287,7 @@ end
 Saga_Menu = 
 function()
 	Saga = MenuElement({type = MENU, id = "Katarina", name = "Saga's Katarina: Shump on These Nuts", icon = AIOIcon})
-	MenuElement({ id = "blank", type = SPACE ,name = "Version 2.3.3"})
+	MenuElement({ id = "blank", type = SPACE ,name = "Version 3.0.0"})
 	--Combo
 	Saga:MenuElement({id = "Combo", name = "Combo", type = MENU})
 	Saga.Combo:MenuElement({id = "UseQ", name = "Q", value = true})
@@ -1312,7 +1318,10 @@ function()
 	Saga:MenuElement({id = "Misc", name = "R Settings", type = MENU})
 	Saga.Misc:MenuElement({id = "UseR", name = "R", value = true})
 	Saga.Misc:MenuElement({id = "RCount", name = "Use R on X targets", value = 3, min = 1, max = 5, step = 1})
-	
+    
+    Saga:MenuElement({id = "Rate", name = "Recache Rate", type = MENU})
+	Saga.Rate:MenuElement({id = "champion", name = "Value", value = 30, min = 1, max = 120, step = 1})
+
     Saga:MenuElement({id = "Escape", name = "RUN NINJA MODE (Flee)", type = MENU})
     Saga.Escape:MenuElement({id = "UseW", name = "W", value = true})
     Saga.Escape:MenuElement({id = "UseE", name = "E", value = true})
