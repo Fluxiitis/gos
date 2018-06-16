@@ -409,12 +409,21 @@ end
 
 function Combo(target)
         if Config.Key.Combo:Value() then
+		
+		if Config.Combo.R.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R), false, myHero.pos) then
+                                if Config.Combo.R.Turret:Value() then
+                                        if not UnderEnemyTurret(target) then
+                                                Control.CastSpell(HK_R, target.pos)
+                        end
+                                else
+                                        Control.CastSpell(HK_R, target.pos)
+                        end
+		if Config.Combo.Q.Enabled:Value() and CanUseSpell(myHero, _Q ) and IsValidTarget(target, GetRange(_Q), false, myHero.pos) then
+                            Control.CastSpell(HK_Q, target.pos)
+                        end
 				if Config.Combo.E.Enabled:Value() and Ready(_E) and IsValidTarget(target, GetRange(_W), false, myHero.pos) then
                             Control.CastSpell(HK_E)
 						end
-                if Config.Combo.Q.Enabled:Value() and CanUseSpell(myHero, _Q ) and IsValidTarget(target, GetRange(_Q), false, myHero.pos) then
-                            Control.CastSpell(HK_Q, target.pos)
-                        end
 				if Config.Combo.W.Enabled:Value() and Ready(_W) then
 							Control.CastSpell(HK_W)
 						end
@@ -441,14 +450,6 @@ function Combo(target)
 						Control.CastSpell(Item_HK[CutBlade],target.pos)
 						end
 					end
-                if Config.Combo.R.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R), false, myHero.pos) then
-                                if Config.Combo.R.Turret:Value() then
-                                        if not UnderEnemyTurret(target) then
-                                                Control.CastSpell(HK_R, target.pos)
-                        end
-                                else
-                                        Control.CastSpell(HK_R, target.pos)
-                        end
                         if Config.Combo.R.GapClose.Enabled:Value() and Ready(_R) and IsValidTarget(target, GetRange(_R) * 2 + 100, false, myHero.pos) then
                                 if myHero.pos:DistanceTo(target.pos) > GetRange(_R) then
                                         if MinionForGap(target) ~= nil and myHero:GetSpellData(_R).ammo > Config.Combo.R.GapClose.Stacks:Value() and CountEnemiesInRange(target, 950) <= Config.Combo.R.GapClose.Enemies:Value() then
